@@ -250,6 +250,7 @@ module.exports.metadata =
     "cordova-plugin-media-capture": "1.0.2-dev",
     "cordova-plugin-camera": "1.2.0",
     "cordova-plugin-file-transfer": "1.3.1-dev",
+    "cordova-plugin-console": "1.0.2-dev",
     "cordova-plugin-file": "3.0.0"
 }
 // BOTTOM OF METADATA

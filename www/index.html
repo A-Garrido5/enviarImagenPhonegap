@@ -2,13 +2,20 @@
 
 <html>
     <head>
-        <meta charset="utf-8" />
+
+           <script src="jquery.mobile/jquery-1.7.2.min"></script>
+    
+            
+            <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+            <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+            <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+            <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+
+        
 
         <div data-role="page" id="page-home" class="type-interior" data-theme="b">
-        
-        <gap:plugin name="org.apache.cordova.file-trasfer" />
-        <gap:plugin name="com.chanthu.evri.gcs-file-transfer" version="1.0.0" />
-        <gap:plugin name="org.apache.cordova.camera"/>
+
+
         <div data-role="header" data-theme="b">
 
 
@@ -18,49 +25,96 @@
         
     <title>PhoneGap</title>
 
-    <link rel="stylesheet" href="jquery.mobile/jquery.mobile-1.1.0.min.css" />
-    <link rel="stylesheet" href="index.css" /> 
+    
 
-    <script src="jquery.mobile/jquery-1.7.2.min"></script>
-    <script src="jquery.mobile/jquery.mobile-1.1.0.min.js"></script>
-    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-    <script type="text/javascript" charset="utf-8" src="index.js"></script>
+ 
+    
 
     </head>
 
     <body>
         
-        <div id="camera">
-            <button class="camera-control" onclick="uploadFromGallery();">Capture Photo</button>
-         
-            <div style="text-align:center;margin:20px;">
-                <img id="cameraPic" src="" style="width:auto;height:240px;"></img>
-            </div>
-        </div>
-        
+        <form id="formulario" >
+  
+            <label> Usuario </label>
+            <input type="text" id="nombredeusuario" name="nombredeusuario">
+  
+            <label> Password </label>
+            <input type="password" id="clave" name="clave" >
+
+            <input type="submit" value="Login" id="botonLogin">
+      
+        </form>         
+    
+
     <script type="text/javascript">
+
+    $('#formulario').submit(function() { 
+
+            var datosUsuario = $("#nombredeusuario").val()
+            var datosPassword = $("#clave").val()
+
+            var ajax_data = {
+              "usuario"     : datosUsuario,
+              "password"   : datosPassword
+              
+            };    
+
+
+            alert(JSON.stringify( ajax_data));
+
+            
+
+            $.ajax({
+
+                  url: "http://services.macroinside.com/ServicioRTC.svc/ValidarUsuario",
+                  data: ajax_data,
+                  type: "post",
+                  
+                  
+                  success: function(json) {
+                     alert(JSON.stringify(json));
+                  },
+
+                  error:function (xhr, ajaxOptions, thrownError) {
+                     alert(thrownError);
+                  }
+            });
+                
+
+    });
+
+        
+
+    </script>
+        
+        
+   <!-- <script type="text/javascript">
        
-         
+         "http://services.macroinside.com/ServicioRTC.svc/ValidarUsuario"
 
         function uploadFromGallery() {
 
     // Retrieve image file location from specified source
-    navigator.camera.getPicture(uploadPhoto,
-                                function(message) { alert('get picture failed'); },
-                                { quality: 50, 
-                                destinationType: navigator.camera.DestinationType.FILE_URI,
-                                 }
-                                );
+        navigator.camera.getPicture(uploadPhoto,
+                                    function(message) { alert('get picture failed'); },
+                                    { quality: 10, 
+                                    destinationType: navigator.camera.DestinationType.FILE_URI,
+                                     }
+                                    );
 
         }
 
         function uploadPhoto(imageURI) {
+            
             var options = new FileUploadOptions();
             options.fileKey="file";
-            options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1)+'.png';
-            options.mimeType="text/plain";
+            options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1)+'.jpeg';
+            options.mimeType="image/jpeg";
 
             document.getElementById('cameraPic').src=imageURI;
+
+             //$("#cameraPic").src(imageURI);
 
             var params = new Object();
 
@@ -68,18 +122,20 @@
 
             var ft = new FileTransfer();
             ft.upload(imageURI, 
-                encodeURI("http://services.macroinside.com/ServicioRest.svc/IngresarRequerimiento/imagen/"),
+                encodeURI("http://192.168.1.32/test.php"),
             function (e) {
                 alert('success');
+                alert(JSON.stringify(e));
+
             },function (e) {
-                alert("failed");
+                alert(JSON.stringify(e));
             },options);
 
         }
-
+        /// http://services.macroinside.com/ServicioRTC.svc
         ///URL Servicio http://services.macroinside.com/ServicioRest.svc/IngresarRequerimiento/imagen/
 
     </script>
-        
+     -->   
     </body>
 </html>
