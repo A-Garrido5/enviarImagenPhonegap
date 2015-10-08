@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8" />
+
+        <div data-role="page" id="page-home" class="type-interior" data-theme="b">
+        
+        <gap:plugin name="org.apache.cordova.file-trasfer" />
+        <gap:plugin name="com.chanthu.evri.gcs-file-transfer" version="1.0.0" />
+        <gap:plugin name="org.apache.cordova.camera"/>
+        <div data-role="header" data-theme="b">
+
+
+            <h1>PhoneGap</h1>
+            
+        </div>      
+        
+    <title>PhoneGap</title>
+
+    <link rel="stylesheet" href="jquery.mobile/jquery.mobile-1.1.0.min.css" />
+    <link rel="stylesheet" href="index.css" /> 
+
+    <script src="jquery.mobile/jquery-1.7.2.min"></script>
+    <script src="jquery.mobile/jquery.mobile-1.1.0.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8" src="index.js"></script>
+
+    </head>
+
+    <body>
+        
+        <div id="camera">
+            <button class="camera-control" onclick="uploadFromGallery();">Capture Photo</button>
+         
+            <div style="text-align:center;margin:20px;">
+                <img id="cameraPic" src="" style="width:auto;height:240px;"></img>
+            </div>
+        </div>
+        
+    <script type="text/javascript">
+       
+         
+
+        function uploadFromGallery() {
+
+    // Retrieve image file location from specified source
+    navigator.camera.getPicture(uploadPhoto,
+                                function(message) { alert('get picture failed'); },
+                                { quality: 50, 
+                                destinationType: navigator.camera.DestinationType.FILE_URI,
+                                 }
+                                );
+
+        }
+
+        function uploadPhoto(imageURI) {
+            var options = new FileUploadOptions();
+            options.fileKey="file";
+            options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1)+'.png';
+            options.mimeType="text/plain";
+
+            document.getElementById('cameraPic').src=imageURI;
+
+            var params = new Object();
+
+            options.params = params;
+
+            var ft = new FileTransfer();
+            ft.upload(imageURI, 
+                encodeURI("http://services.macroinside.com/ServicioRest.svc/IngresarRequerimiento/imagen/"),
+            function (e) {
+                alert('success');
+            },function (e) {
+                alert("failed");
+            },options);
+
+        }
+
+        ///URL Servicio http://services.macroinside.com/ServicioRest.svc/IngresarRequerimiento/imagen/
+
+    </script>
+        
+    </body>
+</html>
