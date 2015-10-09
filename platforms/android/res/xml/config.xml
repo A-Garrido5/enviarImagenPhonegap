@@ -18,6 +18,9 @@
     <feature name="FileTransfer">
         <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer" />
     </feature>
+    <feature name="md5chksum">
+        <param name="android-package" value="de.fastr.phonegap.plugins.md5chksum" />
+    </feature>
     <preference name="AndroidPersistentFileLocation" value="Internal" />
     <allow-intent href="market:*" />
     <name>Hello World</name>

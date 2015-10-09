@@ -50,5 +50,22 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "de.fastr.phonegap.plugins.md5chksum": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/fastrde/phonegap-md5.git",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "org.apache.cordova.file": {
+        "source": {
+            "type": "registry",
+            "id": "org.apache.cordova.file"
+        },
+        "is_top_level": false,
+        "variables": {}
     }
 }

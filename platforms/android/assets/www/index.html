@@ -6,10 +6,11 @@
            <script src="jquery.mobile/jquery-1.7.2.min"></script>
     
             
-            <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+            
             <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
             <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
             <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+            <script src='jquery.base64.js'></script>
 
         
 
@@ -35,54 +36,72 @@
     <body>
         
         <form id="formulario" >
-  
+            <br>
             <label> Usuario </label>
-            <input type="text" id="nombredeusuario" name="nombredeusuario">
+            <input type="text" id="nombredeusuario" name="nombredeusuario" placeholder="Ingrese su nombre de usuario">
   
             <label> Password </label>
-            <input type="password" id="clave" name="clave" >
-
-            <input type="submit" value="Login" id="botonLogin">
+            <input type="password" id="clave" name="clave" placeholder="Ingrese su contrase&ntilde;a">
+            <br>
+            <input type="submit" text="Ingresar" id="botonLogin">
       
         </form>         
     
+        <button type="submit" id="test">Cambio de pagina</button> 
 
     <script type="text/javascript">
 
-    $('#formulario').submit(function() { 
+        $('#test').click(function(){
 
-            var datosUsuario = $("#nombredeusuario").val()
-            var datosPassword = $("#clave").val()
+            window.location="inicio.html";
 
-            var ajax_data = {
-              "usuario"     : datosUsuario,
-              "password"   : datosPassword
-              
-            };    
+            valor2 = localStorage.getItem('user');
+                
+
+            alert(valor2);
+
+        });
+
+        
+
+        $('#formulario').submit(function() { 
+
+                var datosUsuario = $("#nombredeusuario").val()
+                var datosPassword = $("#clave").val()
+
+                var cripto = window.btoa(datosUsuario+'|'+datosPassword);
+
+                var urlLogin="http://services.macroinside.com/ServicioRTC.svc/ValidarUsuario/"+cripto;  
+
+                localStorage.setItem('user', cripto);
+                valor = localStorage.getItem('user');
+                
+
+                //alert(valor);
 
 
-            alert(JSON.stringify( ajax_data));
 
-            
+                $.ajax({
 
-            $.ajax({
-
-                  url: "http://services.macroinside.com/ServicioRTC.svc/ValidarUsuario",
-                  data: ajax_data,
-                  type: "post",
+                  url: urlLogin,
+                  type: "POST",
+                  dataType: "json",
                   
                   
                   success: function(json) {
-                     alert(JSON.stringify(json));
+    
+                    alert(JSON.stringify(json));
                   },
 
                   error:function (xhr, ajaxOptions, thrownError) {
                      alert(thrownError);
+                     alert(JSON.stringify(xhr));
                   }
-            });
-                
 
-    });
+                });
+                    
+
+        });
 
         
 

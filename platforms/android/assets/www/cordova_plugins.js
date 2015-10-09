@@ -97,6 +97,13 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/de.fastr.phonegap.plugins.md5chksum/www/md5chksum.js",
+        "id": "de.fastr.phonegap.plugins.md5chksum.md5chksum",
+        "clobbers": [
+            "md5chksum"
+        ]
+    },
+    {
         "file": "plugins/cordova-plugin-file/www/DirectoryEntry.js",
         "id": "cordova-plugin-file.DirectoryEntry",
         "clobbers": [
@@ -251,6 +258,7 @@ module.exports.metadata =
     "cordova-plugin-camera": "1.2.0",
     "cordova-plugin-file-transfer": "1.3.1-dev",
     "cordova-plugin-console": "1.0.2-dev",
+    "de.fastr.phonegap.plugins.md5chksum": "0.1.3",
     "cordova-plugin-file": "3.0.0"
 }
 // BOTTOM OF METADATA

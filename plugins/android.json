@@ -27,6 +27,10 @@
                         {
                             "xml": "<feature name=\"FileTransfer\"><param name=\"android-package\" value=\"org.apache.cordova.filetransfer.FileTransfer\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"md5chksum\"><param name=\"android-package\" value=\"de.fastr.phonegap.plugins.md5chksum\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -75,6 +79,9 @@
             "PACKAGE_NAME": "com.phonegap.helloworld"
         },
         "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.phonegap.helloworld"
+        },
+        "de.fastr.phonegap.plugins.md5chksum": {
             "PACKAGE_NAME": "com.phonegap.helloworld"
         }
     },
