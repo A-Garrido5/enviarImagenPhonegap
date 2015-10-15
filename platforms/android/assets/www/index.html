@@ -10,10 +10,12 @@
         
 
         <script type="text/javascript" charset="utf-8" src="js/json2.js"></script>
+        
     
                   
             <!--<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script> -->
         <script type="text/javascript" charset="utf-8" src="jquery.mobile/jquery.mobile-1.4.5.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
             
         
     <title>PhoneGap</title>
@@ -32,7 +34,10 @@
 
             var cripto = window.btoa(datosUsuario+'|'+datosPassword);
 
-            var urlLogin="http://services.macroinside.com/ServicioRTC.svc/ValidarUsuario/"+cripto;  
+        
+            //var urlLogin="http://services.macroinside.com/ServicioRTC.svc/ValidarUsuario/"+cripto; 
+
+            var urlLogin="http://services.macroinside.com/api/Login/"+cripto; 
 
             localStorage.setItem('user', cripto);
             valor = localStorage.getItem('user');
@@ -40,25 +45,23 @@
             $.ajax({
 
                   url: urlLogin,
-                  type: "POST",
+                  type: "GET",
                   dataType: "json",
 
                   success: function(json) {
-                    
-                    alert(JSON.stringify(json));                  
-                    
-                    
-                    //alert(eval(json.d));
 
-                    if(dataType==="json"){
-                        alert("soy json");
-                    }
+                                    
+                    document.getElementById('nombres').innerHTML=json.nombres.toString();
+                    
 
-                    else{
-                        alert("No soy json");
-                    }
-                                        
-                    //$("#resultado").html(respuesta.menu.toString());
+                    //alert(json.nombres);
+                       
+
+                       
+              
+                    
+
+
 
                   },
 
@@ -68,10 +71,12 @@
                   }
 
             });
+
+
        });
 
        </script>
-        
+         
         
         <br>
         <br>
@@ -84,6 +89,8 @@
         <input type="password" id="clave" name="clave" value="prueba1" placeholder="Ingrese su contrase&ntilde;a">
         <br>
         <button type="submit" id="botonLogin">Enviar</button> 
+
+        <div class="center" id="nombres"></div>
       
         
     

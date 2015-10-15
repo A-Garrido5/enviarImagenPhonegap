@@ -49,18 +49,21 @@
 
                   url: urlLogin,
                   type: "POST",
-                  DataType: "json",
+                  dataType: "json",
                   
                   
-                  success: function(json) {
+                  success: function(data) {
                     
-                    alert(JSON.stringify(json));                  
+                    alert(JSON.stringify(data));                  
                     
-                    //alert(json.menu);
+
+                    var arr_from_json = JSON.parse( JSON.stringify(data) );
 
                     //alert(eval(json.d));
 
-                    if(DataType==="json"){
+                    alert(arr_from_json);
+
+                    if(dataType==="json"){
                         alert("soy json");
                     }
 
