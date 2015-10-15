@@ -104,6 +104,13 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/in.edelworks.sharedpreferences/www/sharedpreferences.js",
+        "id": "in.edelworks.sharedpreferences.SharedPreferences",
+        "clobbers": [
+            "sharedpreferences"
+        ]
+    },
+    {
         "file": "plugins/cordova-plugin-file/www/DirectoryEntry.js",
         "id": "cordova-plugin-file.DirectoryEntry",
         "clobbers": [
@@ -259,6 +266,7 @@ module.exports.metadata =
     "cordova-plugin-file-transfer": "1.3.1-dev",
     "cordova-plugin-console": "1.0.2-dev",
     "de.fastr.phonegap.plugins.md5chksum": "0.1.3",
+    "in.edelworks.sharedpreferences": "0.1.0",
     "cordova-plugin-file": "3.0.0"
 }
 // BOTTOM OF METADATA

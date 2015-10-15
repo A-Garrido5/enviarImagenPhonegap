@@ -2364,7 +2364,7 @@ var FileReader = function() {
 
 // States
 FileReader.EMPTY = 0;
-FileReader.LOADING = 1;
+
 FileReader.DONE = 2;
 
 /**

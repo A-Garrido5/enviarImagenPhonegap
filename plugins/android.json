@@ -31,6 +31,10 @@
                         {
                             "xml": "<feature name=\"md5chksum\"><param name=\"android-package\" value=\"de.fastr.phonegap.plugins.md5chksum\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Sharedpreferences\"><param name=\"android-package\" value=\"in.edelworks.sharedpreferences.Sharedpreferences\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -82,6 +86,9 @@
             "PACKAGE_NAME": "com.phonegap.helloworld"
         },
         "de.fastr.phonegap.plugins.md5chksum": {
+            "PACKAGE_NAME": "com.phonegap.helloworld"
+        },
+        "in.edelworks.sharedpreferences": {
             "PACKAGE_NAME": "com.phonegap.helloworld"
         }
     },
