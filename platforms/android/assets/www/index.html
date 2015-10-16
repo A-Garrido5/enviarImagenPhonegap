@@ -168,7 +168,7 @@
                     <nav class="dashboard-menu">
                         <div class="row text-center">
                             <div class="col-33">
-                                <a href="about.html" class="menu-link">
+                                <a href="about.html" class="menu-link" onclick="redirigir('settings.html')">
                                     <span class="icon-news"></span>
                                     <span>Article</span>
                                 </a>
@@ -214,7 +214,7 @@
                                 </a>
                             </div>
                             <div class="col-33">
-                                <a href="videos.html" class="menu-link">
+                                <a onclick="redirigir('crearCuenta.html')" class="menu-link">
                                     <span class="icon-camera"></span>
                                     <span>Video</span>
                                 </a>
@@ -234,7 +234,7 @@
     </div>
 </div>
 
-<div class="popup popup-login">
+<div id="dialogLogin" class="popup popup-login">
     <div class="content-block">
 
         <a href="#" class="close-popup">
@@ -242,7 +242,7 @@
         </a>
 
         <div class="text-center mt-70">
-            <h2>Hello!</h2>
+            <h2>Bienvenido!</h2>
 
             <h3>You wont to login?!</h3>
         </div>
@@ -306,6 +306,7 @@
 <script type="text/javascript" src="bower_components/swipebox/src/js/jquery.swipebox.min.js"></script>
 <script type="text/javascript" src="bower_components/jquery-validation/dist/jquery.validate.min.js"></script>
 <script type="text/javascript" src="assets/js/index.js"></script>
+<script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="assets/js/jflickrfeed.min.js"></script>
 <script type="text/javascript" src="assets/js/min/app.js"></script>
 </body>

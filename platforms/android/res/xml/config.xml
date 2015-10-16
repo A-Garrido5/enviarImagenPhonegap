@@ -24,9 +24,13 @@
     <feature name="Sharedpreferences">
         <param name="android-package" value="in.edelworks.sharedpreferences.Sharedpreferences" />
     </feature>
+    <feature name="SplashScreen">
+        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+        <param name="onload" value="true" />
+    </feature>
     <preference name="AndroidPersistentFileLocation" value="Internal" />
     <allow-intent href="market:*" />
-    <name>Hello World</name>
+    <name>RTC PostVenta</name>
     <description>
         Hello World sample application that responds to the deviceready event.
     </description>
@@ -34,6 +38,8 @@
         PhoneGap Team
     </author>
     <content src="index.html" />
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreenDelay" value="5000" />
     <preference name="android-minSdkVersion" value="10" />
     <preference name="permissions" value="none" />
     <preference name="orientation" value="default" />

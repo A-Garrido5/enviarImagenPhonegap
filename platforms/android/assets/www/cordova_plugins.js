@@ -111,6 +111,13 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
+        "id": "cordova-plugin-splashscreen.SplashScreen",
+        "clobbers": [
+            "navigator.splashscreen"
+        ]
+    },
+    {
         "file": "plugins/cordova-plugin-file/www/DirectoryEntry.js",
         "id": "cordova-plugin-file.DirectoryEntry",
         "clobbers": [
@@ -267,6 +274,7 @@ module.exports.metadata =
     "cordova-plugin-console": "1.0.2-dev",
     "de.fastr.phonegap.plugins.md5chksum": "0.1.3",
     "in.edelworks.sharedpreferences": "0.1.0",
+    "cordova-plugin-splashscreen": "3.0.0-dev",
     "cordova-plugin-file": "3.0.0"
 }
 // BOTTOM OF METADATA

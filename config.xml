@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.phonegap.helloworld" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>Hello World</name>
+    <name>RTC PostVenta</name>
     <description>
         Hello World sample application that responds to the deviceready event.
     </description>
@@ -8,6 +8,8 @@
         PhoneGap Team
     </author>
     <content src="index.html" />
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreenDelay" value="5000" />
     <preference name="android-minSdkVersion" value="10" />
     <preference name="permissions" value="none" />
     <preference name="orientation" value="default" />
@@ -83,4 +85,7 @@
         <allow-intent href="itms-apps:*" />
     </platform>
     <engine name="android" spec="~4.1.1" />
+    <feature name="Camera">
+        <param name="android-package" value="org.apache.cordova.CameraLauncher" />
+    </feature>
 </widget>

@@ -2,23 +2,42 @@
 
 $(document).ready(function (){
 
+
+
 	var value = window.localStorage.getItem("username");
 
-	alert(value);
+	
 
-	if (value.lenght < 4)
+	if (value===null)
 	{
-		alert("1");
-		$("#linkPopUplogin").live();
+		
+		//$('#dialogLogin').show();
+		//$( "#dialogLogin" ).trigger( "click" );
+
+		//$( '#dialogLogin' ).click ();
+
+//		document.getElementById('dialogLogin').onclick();
+
+		
+
+
 	}
 	else
 	{	
-		alert("2");
+		
 		$('#nameRight').text(value);
 	}
 
 
+
+
 });
+
+function redirigir(ruta){
+
+	location.href=ruta;
+
+}
 
 function login(datos){
 
@@ -30,13 +49,13 @@ function login(datos){
           type: "GET",
           dataType: "json",
           success: function(json) {
-            alert(JSON.stringify(json));
+            //alert(JSON.stringify(json));
             var sesionvalida = parseInt(json.sesionValida);
             if(sesionvalida!=1){
               alert(json.mensaje);
                                   }
             else{
-              alert("            "+json.mensaje +'\n'+json.nombres);
+             // alert("            "+json.mensaje +'\n'+json.nombres);
 //                     localStorage.setItem("username", json.nombres);
 				
 				$('#nameRight').text(json.nombres);
