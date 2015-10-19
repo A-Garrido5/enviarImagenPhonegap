@@ -2,7 +2,9 @@
 document.getElementById('accept').style.marginRight = "100px";
 document.getElementById('cancel').style.marginLeft = "100px";
 
- 
+$('#descripcion').val(null);
+
+
     document.getElementById("descripcion").autofocus;
 $('#cancel').click(function() { 
 
@@ -10,6 +12,11 @@ $('#cancel').click(function() {
 
 
 });
+
+$('input:text').focus(
+function(){
+      document.getElementById('descripcion').setSelectionRange(0, 0);
+    });
 
 function sendData(){
 

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+
+		<title>prueba</title>
+
+		<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+
+		<script type="text/javascript" charset="utf-8">
+
+			var pictureSource; // picture source
+
+			var destinationType; // sets the format of returned value
+
+			// Wait for device API libraries to load
+
+			//
+
+			document.addEventListener("deviceready", onDeviceReady, false);
+
+			// device APIs are available
+
+			//
+
+			function onDeviceReady() {
+
+				pictureSource = navigator.camera.PictureSourceType;
+
+				destinationType = navigator.camera.DestinationType;
+
+			}
+
+			// Called when a photo is successfully retrieved
+
+			//
+
+			
+
+			function uploadPhoto(imageURI) {
+	            var options = new FileUploadOptions();
+	            options.fileKey="file";
+	            options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+	            options.mimeType="image/jpeg";
+
+	            var params = new Object();
+	            params.value1 = "test";
+	            params.value2 = "param";
+
+	            options.params = params;
+
+	            var ft = new FileTransfer();
+	            ft.upload(imageURI, encodeURI("http://sae1.imatronix.com:2614/WEBAPI_SERVICE/api/Login"), win, fail, options);
+	        }
+
+	        function win(r) {
+	        	
+	            alert("Code = " + r.responseCode);
+	            alert("Response = " + r.response);
+	            alert("Sent = " + r.bytesSent);
+	        }
+
+	        function fail(error) {
+	            alert("An error has occurred: Code = " + error.code);
+	            console.log("upload error source " + error.source);
+	            console.log("upload error target " + error.target);
+	        }
+
+
+			function capturePhoto() {
+
+			// Take picture using device camera and retrieve image as base64-encoded string
+
+				navigator.camera.getPicture(uploadPhoto,
+	                function(message) { alert('get picture failed'); },
+	                { quality: 30, 
+		                destinationType: navigator.camera.DestinationType.FILE_URI,
+		             }   //sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY }
+	                );
+
+			}
+
+			
+			
+			function onFail(message) {
+
+				alert('Failed because: ' + message);
+
+			}
+
+			/*var files = $("#inputFile").get(0).files;
+       var data = new FormData();
+       for (i = 0; i < files.length; i++) {
+           data.append("file" + i, files[i]);
+           alert("file" + i + files[i]);
+       }
+       $.ajax({
+           type: "POST",
+           url: "http://sae1.imatronix.com:2614/WEBAPI_SERVICE/api/Login",
+           contentType: false,
+           processData: false,
+           data: data,
+           success: function (result) {
+               if (result) {
+                   alert('Archivos subidos correctamente');
+                   $("#inputFile").val('');
+               }
+           },
+           error: ServiceFailed
+*/
+		</script>
+
+	</head>
+
+	<body>
+
+		<h1>Manejar camara</h1>
+
+		<button onclick="capturePhoto();">Capture Photo</button> <br>
+
+		<img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
+
+		<img style="display:none;" id="largeImage" src="" />
+
+	</body>
+
+</html>
