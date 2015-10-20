@@ -41,28 +41,7 @@ function probarAjax(){
     //alert("Probando ajax");
 
     var urlLogin = "http://sae1.imatronix.com:2614/WEBAPI_SERVICE/api/Documento";
-/*
-    $.ajax({
-          url: urlLogin,
-          type: "POST",
-          dataType: "json",
-          success: function(json) {
-            alert(JSON.stringify(json));
-            alert("funciono el")
-                       
-            //document.getElementById('nombres').innerHTML=json.nombres.toString();
-            
-            //alert(json.nombres);
-               
-               
-      
-            
-          },
-          error:function (xhr, ajaxOptions, thrownError) {
-             alert(JSON.stringify(thrownError));
-             alert(JSON.stringify(xhr));
-          }
-    });*/
+
 
     $.ajax({
            

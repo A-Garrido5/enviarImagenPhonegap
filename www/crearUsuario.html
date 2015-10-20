@@ -32,6 +32,8 @@
 
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 
+   
+
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="bower_components/framework7/dist/css/framework7.ios.min.css">
     <link rel="stylesheet" href="bower_components/swipebox/src/css/swipebox.css">
@@ -43,19 +45,22 @@
 	</head>
 
 	<body>	
-		
+               
+
+		<div class="statusbar-overlay"></div>
+		<div class="panel-overlay"></div>
        
          
         <div class="views">
 	    <div class="view view-main">
 
-            
-                
+            <div class="navbar navbar-clear">
+                <div class="navbar-inner">
 				
-            
+               		   
                     
-                
-            
+                </div>
+            </div>
     
             <div class="pages navbar-fixed toolbar-fixed">
                 <div data-page="index" class="page page-bg">
@@ -63,48 +68,132 @@
                     <div class="page-content">
                         <nav class="dashboard-menu">
 
-                            <h1>Iniciar sesión</h1>
-    
+                        <h1>Crear usuario</h1>
 
         
 
-        <div class="text-center mt-70">
-            <h2>Bienvenido!</h2>
-
-            
-        </div>
 
         <div class="forms mt-50">
 
-
-
-
-                <div class="form-row">
+            <div class="form-row">
                     <div class="input-text">
-                        <input id="nombredeusuario" type="text" name="login" placeholder="Login" onKeyDown="return isNumber(event);" onpaste="return false" value="demo">
+                        <label>Nombres</label><br>
+                        <input id="userName" type="text" placeholder="Ingrese su nombres" />
                     </div>
-                </div>
-                
-                <div class="form-row">
-                    <div class="input-text">
-                        <input id="clave" type="password" name="password" placeholder="Contrase&ntilde;a" nKeyDown="return isNumber(event);" onpaste="return false" value="password">
-                    </div>
-                </div>
+            </div>
 
-                <br>
-                <br>
-                <br>
-                
-                <div class="form-row">
-                    <div class="input-submit" id="botonLogin">
+            <br>
+            <br>
+
+            <div class="form-row">
+                    <div class="input-text">
+                        <label>Apellidos</label><br>
+                        <input id="userLastName" type="text" placeholder="Ingrese sus apellidos" >
+                    </div>
+            </div>
+
+            <br>
+            <br>
+
+            <div class="form-row">
+                    <div class="input-text">
+                        <label>Correo electrónico</label><br>
+                        <input id="email" placeholder="Ingrese su Email">
+                    </div>
+            </div>
+
+            <br>
+            <br>
+
+            <div class="form-row">
+                    <div class="input-text">
+                        <label>Contraseña</label><br>
+                        <input id="pass" type="password" placeholder="Ingrese su contrase&ntilde;a" maxlength="10">
+                    </div>
+            </div>
+
+            <br>
+            <br>
+
+            <div class="form-row">
+                    <div class="input-text">
+                        <label>Repetir contraseña</label><br>
+                        <input id="passConfirm" type="password" placeholder=" Vuelva a ingresar su contrase&ntilde;a" maxlength="10">
+                    </div>
+            </div>
+
+            <br>
+            <br>
+
+            <!--
+
+            <div class="form-row">
+                    <div class="input-text">
+                        <label>Teléfono</label><br>
+                        <input id="fono" type="text" placeholder="Ingrese su número de teléfono fijo">
+                    </div>
+            </div>
+
+            <br>
+            <br> -->
+            
+            <div class="form-row">
+                    <div class="input-text">
+                        <label>Celular</label><br>
+                        <input id="mobileFono" type="text" placeholder="Ingrese su número de teléfono móvil">
+                    </div>
+            </div>
+
+            <br>
+            <br>
+
+            <div class="form-row">
+                    <div class="input-text">
+                        <label>Dirección</label><br>
+                        <input id="address" type="text" placeholder="Ingrese su dirección">
+                    </div>
+            </div>
+
+            <br>
+            <br>
+
+            <div class="form-row">
+                    <div class="combo">
+                        <label>Región</label><br>
+                        
+                        <select id="region">
+                            <option value="-" selected="selected">- - - - - - - - - Seleccionar - - - - - - - - -</option>
+                            
+                        </select>
+                        
+                    </div>
+            </div>
+
+            <div class="form-row">
+                    <div class="combo">
+                        <label>Ciudad</label><br>
+                        <select id="city">
+                            <option value="-" selected="selected">- - - - - - - - - Seleccionar - - - - - - - - -</option>
+                            
+                        </select>
+                        
+                    </div>
+            </div>
+
+            <br>
+            <br>
+            <br>
+            <br>
+
+            
+
+            <div class="form-row">
+                    <div class="input-submit" id="sendToCreate">
                         <a class="button button-big js-form-submit button-fill button-primary">Ingresar</a>
                     </div>               
-                </div>
+             </div>
+                
 
-                <div class="text-center mt-70">
-
-                    <a onclick="crearCuenta()" href="#">¿No tienes una cuenta? ¡Regístrate!</a>
-                </div>
         </div>
 
         
@@ -121,18 +210,19 @@
     
         </div>
 </div>
-
+        
+        
 	
         <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
         <script type="text/javascript" src="bower_components/framework7/dist/js/framework7.min.js"></script>
         <script type="text/javascript" src="bower_components/swipebox/src/js/jquery.swipebox.min.js"></script>
         <script type="text/javascript" src="bower_components/jquery-validation/dist/jquery.validate.min.js"></script>
 
-        <script type="text/javascript" src="assets/js/index.js"></script>
-        
+        <script type="text/javascript" src="assets/js/crearUsuario.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="assets/js/jflickrfeed.min.js"></script>
         <script type="text/javascript" src="assets/js/min/app.js"></script>
-        <script type="text/javascript" src="cordova.js"></script>
+
         
 
 	</body>

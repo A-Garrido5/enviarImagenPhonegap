@@ -1,6 +1,6 @@
 
 
-//localStorage.removeItem("username")
+localStorage.removeItem("username")
 
 $(document).ready(function (){
 
@@ -8,7 +8,7 @@ $(document).ready(function (){
 
 	var value = window.localStorage.getItem("username");
 
-	console.log(value);
+	
 
 	if (value===null){
 
@@ -17,8 +17,8 @@ $(document).ready(function (){
     var ubicacionActual= window.location.pathname;
 
 
-
-    if(ubicacionActual!="/android_asset/www/login.html"){
+    if(ubicacionActual!="/login.html"){
+    //if(ubicacionActual!="/android_asset/www/login.html"){
       location.href="login.html";  
   }
 		
@@ -118,6 +118,25 @@ $('#botonLogin').click(function() {
         var cripto = window.btoa(datosUsuario+'|'+datosPassword);
 
         login(cripto);
+        
+
+
+});
+
+function enviar(){
+
+  //location.href="login.html"
+
+  //$('element_to_pop_up').bPopup();
+
+}
+
+
+
+$('#sendToCreate').click(function() {
+
+
+        alert("funciona JQuery");
         
 
 
