@@ -1,15 +1,26 @@
 
 
+//localStorage.removeItem("username")
+
 $(document).ready(function (){
 
 
 
 	var value = window.localStorage.getItem("username");
 
-	
+	console.log(value);
 
-	if (value===null)
-	{
+	if (value===null){
+
+
+
+    var ubicacionActual= window.location.pathname;
+
+
+
+    if(ubicacionActual!="/android_asset/www/login.html"){
+      location.href="login.html";  
+  }
 		
 		//$('#dialogLogin').show();
 		//$( "#dialogLogin" ).trigger( "click" );
@@ -39,6 +50,15 @@ function redirigir(ruta){
 
 }
 
+function logout(){
+
+  localStorage.removeItem("username");
+
+  location.href="/android_asset/www/login.html";
+
+
+}
+
 function login(datos){
 
 	
@@ -50,6 +70,7 @@ function login(datos){
           dataType: "json",
           success: function(json) {
             //alert(JSON.stringify(json));
+
             var sesionvalida = parseInt(json.sesionValida);
             if(sesionvalida!=1){
               alert(json.mensaje);
@@ -58,8 +79,10 @@ function login(datos){
              // alert("            "+json.mensaje +'\n'+json.nombres);
 //                     localStorage.setItem("username", json.nombres);
 				
-				$('#nameRight').text(json.nombres);
-				localStorage.setItem("username", json.nombres);
+      				$('#nameRight').text(json.nombres);
+      				localStorage.setItem("username", json.nombres);
+
+              location.href="/android_asset/www/index.html";
               
             }
                             
@@ -87,7 +110,8 @@ function isNumber(e) {
       return patron.test(n);
 }
 
-$('#botonLogin').click(function() { 
+$('#botonLogin').click(function() {
+
 
         var datosUsuario = $("#nombredeusuario").val()
         var datosPassword = $("#clave").val()

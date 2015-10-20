@@ -112,7 +112,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="index.html" class="item-link close-panel item-content">
+                        <a href="index.html" class="item-link close-panel item-content" onclick="logout()">
                             <div class="item-media">
                                 <i class="fa fa-sign-out"></i>
                             </div>
@@ -201,9 +201,9 @@
                                 </a>
                             </div>
                             <div class="col-33">
-                                <a id="linkPopUplogin" href="#" data-popup=".popup-login" class="open-popup menu-link">
+                                <a id="linkPopUplogin" href="#" data-popup=".popup-login" class="open-popup menu-link" >
                                     <span class="icon-lock"></span>
-                                    <span>Login</span>
+                                    <span>Log out</span>
                                 </a>
                             </div>
                         </div>
@@ -232,46 +232,6 @@
             </div>
         </div>
 
-    </div>
-</div>
-
-<div id="dialogLogin" class="popup popup-login">
-    <div class="content-block">
-
-        <a href="#" class="close-popup">
-            skip
-        </a>
-
-        <div class="text-center mt-70">
-            <h2>Bienvenido!</h2>
-
-            <h3>You wont to login?!</h3>
-        </div>
-
-        <div class="forms mt-50">
-            <form method="post"
-                  class="js-validate"
-                  novalidate="novalidate">
-
-                <div class="form-row">
-                    <div class="input-text">
-                        <input id="nombredeusuario" type="text" name="login" placeholder="Login" onKeyDown="return isNumber(event);" onpaste="return false" value="demo">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="input-text">
-                        <input id="clave" type="password" name="password" placeholder="Password" nKeyDown="return isNumber(event);" onpaste="return false" value="password">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="input-submit" id="botonLogin">
-                        <a href="#" class="button button-big js-form-submit button-fill button-primary">Ingresar</a>
-                    </div>
-                </div>
-            </form>
-        </div>
-
-        <a href="http://www.acsim.cl" class="more-info">No posee una cuenta!.</a>
     </div>
 </div>
 
