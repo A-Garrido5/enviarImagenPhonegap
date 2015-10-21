@@ -75,7 +75,9 @@
         </div>
 
         <div class="forms mt-50">
-            
+
+
+
 
                 <div class="form-row">
                     <div class="input-text">
@@ -85,7 +87,7 @@
                 
                 <div class="form-row">
                     <div class="input-text">
-                        <input id="clave" type="password" name="password" placeholder="Password" nKeyDown="return isNumber(event);" onpaste="return false" value="password">
+                        <input id="clave" type="password" name="password" placeholder="Contrase&ntilde;a" nKeyDown="return isNumber(event);" onpaste="return false" value="password">
                     </div>
                 </div>
 
@@ -101,7 +103,7 @@
 
                 <div class="text-center mt-70">
 
-                    <a href="crearUsuario.html">¿No tienes una cuenta? ¡Regístrate!</a>
+                    <a onclick="crearCuenta()" href="#">¿No tienes una cuenta? ¡Regístrate!</a>
                 </div>
         </div>
 
@@ -127,9 +129,10 @@
         <script type="text/javascript" src="bower_components/jquery-validation/dist/jquery.validate.min.js"></script>
 
         <script type="text/javascript" src="assets/js/index.js"></script>
-        <script type="text/javascript" src="cordova.js"></script>
+        
         <script type="text/javascript" src="assets/js/jflickrfeed.min.js"></script>
         <script type="text/javascript" src="assets/js/min/app.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
         
 
 	</body>
