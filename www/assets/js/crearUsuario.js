@@ -6,34 +6,12 @@ $(document).ready(function (){
 });
 
 
-function crearCuenta(){
-  location.href="crearUsuario.html";
-}
+function redirigir(ruta){
 
-function crearUsuario(nombre, apellidos, mail, telefono, celular, direccion, idPais){
-
-  var urlCreate ="";
-
-  $.ajax({
-          url: urlCreate,
-          type: "GET",
-          dataType: "json",
-          success: function(json) {
-            alert(JSON.stringify(json));
-
-               
-      
-            
-          },
-          error:function (xhr, ajaxOptions, thrownError) {
-             alert(JSON.stringify(thrownError));
-             alert(JSON.stringify(xhr));
-          }
-    });
-
-
+  location.href=ruta;
 
 }
+
 
 function obtenerRegiones(){
 
@@ -78,12 +56,12 @@ function obtenerRegiones(){
 function obtenerCiudades(){
 
   var region = $('#region').val();
-//  alert(region);
+
   var ciudad = $('#city').empty();
 
   ciudad.append($('<option>', { 
                         value: "-",
-                        text : "- - - - - - - - Seleccionar - - - - - - - -"
+                        text : "Seleccionar ..."
   }));
 
   var urlGetCity ="http://sae1.imatronix.com:2614/WEBAPI_SERVICE/api/Ciudad/"+region;
@@ -135,7 +113,7 @@ function obtenerComunas(){
 
   comuna.append($('<option>', { 
                         value: "-",
-                        text : "- - - - - - - - Seleccionar - - - - - - - -"
+                        text : "Seleccionar ..."
   }));
 
   
@@ -223,6 +201,21 @@ function validarCampos(){
     errores++;
   }
 
+  if($("#region").val()==='-'){
+    alert("Region inválida");
+    errores++;
+  }
+
+  if($("#city").val()==='-'){
+    alert("Ciudad inválida");
+    errores++;
+  }
+
+  if($("#comuna").val()==='-'){
+    alert("Comuna inválida");
+    errores++;
+  }
+
   if(errores>0){
     alert("Errores: "+errores);
     return false;  
@@ -236,7 +229,50 @@ function validarCampos(){
 
 }
 
+function crearUsuario(nombres, apellidos, mail, contrasena, telefono, celular, direccion, idPais,idRegion, idCiudad, idComuna){
 
+  var urlCreate ="http://sae1.imatronix.com:2614/WEBAPI_SERVICE/api/Usuario";
+  var dataUsuario = { "nombres": nombres, 
+                    "apellidos": apellidos, 
+                    "password": contrasena,
+                    "mail": mail,
+                    "movil": celular,
+                    "direccion": direccion,
+                    "idRegion":  idRegion ,
+                    "idCiudad":  idCiudad ,
+                    "idComuna":  idComuna 
+                  };
+
+
+
+
+
+  $.ajax({
+           
+            //dataType: 'json',
+            url: "http://sae1.imatronix.com:2614/WEBAPI_SERVICE/api/Usuario",
+            type: "POST",
+            contentType:"application/json; charset=utf-8",
+            //dataType:"json",
+            //dataType: "json",
+            data: JSON.stringify(dataUsuario),
+
+            
+           
+            success: function (result) {
+                alert("Usuario creado exitosamente");
+
+                redirigir("login.html");
+
+            },
+           
+            error: function (xhr,status,p3,p4) {
+           
+                alert("error:" + JSON.stringify(xhr));
+            }
+    });
+
+}
 
 $('#sendToCreate').click(function() {
 
@@ -250,14 +286,17 @@ $('#sendToCreate').click(function() {
         var telefono = $("#fono").val();
         var celular = $("#mobileFono").val();
         var direccion = $("#address").val();
-        var idPais = document.getElementById("idCountry");
+        var idPais = "";
+        var idRegion = $("#region").val();
+        var idCiudad = $("#city").val();
+        var idComuna = $("#comuna").val();
 
-        var i = idPais.selectedIndex;
 
-        var realIdPais = idPais.options[i].text;
+        
 
         if(esValido){
-          alert("Todo bien");
+          
+          crearUsuario(nombres,apellidos,mail,contrasena,telefono,celular,direccion,idPais,idRegion,idCiudad,idComuna);
         }
 
    
